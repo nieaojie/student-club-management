@@ -1,0 +1,53 @@
+server:
+  port: 8001
+spring:
+  redis:
+    database: 8
+#    host: 119.23.246.120
+    host: localhost
+    port: 6379
+    cache:
+      redis:
+        cache-null-values: true
+        key-prefix: "com.example:"
+        time-to-live: 600s
+        use-key-prefix: true
+      type: redis
+#    password: 123456
+  application:
+    name: AppServer
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/club_manage_system?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 2
+  #开启sql日志打印
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+
+# swagger配置
+club:
+  swagger:
+    basePackage: priv.naj.club
+    title: swagger接口文档
+    description: swagger接口文档
+    version: v1.0
+  security:
+    enableTestToken: true
+    excludePathPatterns:
+      - /login
+      - /register
+      - /userNameCanUse
+
+
